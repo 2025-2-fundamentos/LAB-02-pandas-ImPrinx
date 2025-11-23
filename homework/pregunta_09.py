@@ -4,7 +4,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
+import pandas as pd
 
 def pregunta_09():
     """
@@ -23,3 +23,20 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+
+    # Se define la ruta del archivo.
+    ruta_archivo = 'files/input/tbl0.tsv'
+    
+    # Se lee el archivo tsv en un DataFrame.
+    df = pd.read_csv(ruta_archivo, sep='\t')
+    
+    # Se crea la columna 'year' extrayendo los primeros 4 caracteres de 'c3'.
+    # Se utiliza el accesor .str para aplicar operaciones de cadena.
+    df['year'] = df['c3'].str.slice(0, 4)
+    
+    return df
+
+# --- Bloque para ejecución y prueba ---
+# Se llama a la función y se imprime el resultado.
+# resultado = pregunta_09()
+# print(resultado)
